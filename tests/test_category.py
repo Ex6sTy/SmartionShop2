@@ -39,3 +39,12 @@ def test_calculate_average_price_empty_category():
     category = Category("Гаджеты", "Умные устройства", [])
     assert category.calculate_average_price() == 0
 
+def test_product_count(temp_json_file):
+    """Тест подсчёта количества продуктов."""
+    Category.category_count = 0
+    Category.product_count = 0
+
+    categories = Category.load_from_json(temp_json_file)
+    expected_count = sum(len(category.get_product_objects()) for category in categories)
+
+    assert Category.product_count == expected_count

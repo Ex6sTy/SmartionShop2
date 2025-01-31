@@ -22,36 +22,35 @@ class Product(CreationLoggerMixin, BaseProduct):
             raise ValueError("Количество не может быть отрицательным")
         if quantity == 0:
             raise ValueError("Товар с нулевым количеством не может быть добавлен")
+        self._price = price  # Приватный атрибут
+        self._quantity = quantity  # Приватный атрибут
         super().__init__(name, description, price, quantity)
 
     def __str__(self):
-        return super().__str__()
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
 
     @property
     def price(self):
         """
         Возвращает цену продукта.
         """
-        return self.__price
+        return self._price
 
     @price.setter
     def price(self, new_price):
-        """
-        Устанавливает новую цену продукта с проверкой.
-        """
         if new_price <= 0:
             print("Цена не должна быть нулевая или отрицательная")
             return
 
-        if new_price < self.price:
+        if new_price < self._price:
             confirm = input(
-                f"Вы уверены, что хотите снизить цену с {self.__price} до {new_price}? (y/n): "
+                f"Вы уверены, что хотите снизить цену с {self._price} до {new_price}? (y/n): "
             )
             if confirm.lower() != "y":
                 print("Изменение цены отменено")
                 return
 
-        self.__price = new_price
+        self._price = new_price
 
     @classmethod
     def new_product(cls, product_data, products_list=None):
@@ -90,12 +89,12 @@ class Product(CreationLoggerMixin, BaseProduct):
         assert product.price == 50.0  # Цена не изменилась
 
     def __add__(self, other):
-        if not isinstance(other, self.__class__):  # Проверяем, чтобы оба объекта были одного класса
+        if type(self) != type(other):  # Проверяем, что складываются объекты одного типа
             raise TypeError("Сложение возможно только между объектами одного и того же типа.")
-        return self.price * self.quantity + other.price * other.quantity
+        return (self.price * self.quantity) + (other.price * other.quantity)
 
     def get_total_value(self):
-        return self.price * self.quantity
+        return self._price * self._quantity
 
 # product = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет", 180000.0, 5)
 # print(product)  # Output: Product(name=Samsung Galaxy S23 Ultra, price=180000.0, quantity=5)

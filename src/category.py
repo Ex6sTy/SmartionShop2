@@ -57,7 +57,7 @@ class Category:
 
         categories = []
         for category_data in data["categories"]:
-            category = Category(category_data["name"], category_data["description"])
+            category = Category(category_data["name"], category_data["description"], [])
             for product_data in category_data["products"]:
                 product = Product(
                     product_data["name"],
@@ -73,16 +73,17 @@ class Category:
 
     def add_product(self, product):
         """Добавляет продукт в категорию."""
+        if not isinstance(product, Product):
+            raise TypeError("Добавлять можно только объекты класса Product или его наследников.")
+
         try:
             if product.quantity == 0:
                 raise ZeroQuantityError(f"Товар {product.name} с нулевым количеством не может быть добавлен.")
         except ZeroQuantityError as e:
             print(e)
         else:
-            if not isinstance(product, Product):
-                raise TypeError("Добавлять можно только объекты класса Product или его наследников.")
             self.__products.append(product)
-            Category.product_count += product.quantity
+            Category.product_count += 1
         finally:
             print(f"Category.product_count после добавления: {Category.product_count}")
             print("Обработка добавления товара завершена.")
@@ -103,11 +104,6 @@ class Category:
         """
         return self.__products
 
-    def __str__(self):
-        """
-        Строковое представление категории.
-        """
-        return f"{self.name}, количество продуктов: {sum(product.quantity for product in self.__products)} шт."
 
     def calculate_average_price(self):
         """
