@@ -1,0 +1,84 @@
+{
+  "categories": [
+    {
+      "name": "Смартфоны",
+      "description": "Устройства для связи",
+      "products": [
+        {
+          "name": "Apple iPhone 16 Pro Max",
+          "description": "Флагман с передовой камерой",
+          "price": 150000.00,
+          "quantity": 15
+        },
+        {
+          "name": "Samsung Galaxy S23 Ultra",
+          "description": "Высокая производительность и мощная камера",
+          "price": 110000.00,
+          "quantity": 20
+        },
+        {
+          "name": "Xiaomi 13 Pro",
+          "description": "Стильный дизайн и быстрая зарядка",
+          "price": 85000.00,
+          "quantity": 30
+        }
+      ]
+    },
+    {
+      "name": "Компьютеры и ноутбуки",
+      "description": "Мощные устройства для работы и игр",
+      "products": [
+        {
+          "name": "Apple MacBook Pro 16",
+          "description": "Мощный ноутбук для работы",
+          "price": 250000.00,
+          "quantity": 10
+        },
+        {
+          "name": "MSI Vector 17.3",
+          "description": "Игровой ноутбук с высоким FPS",
+          "price": 210000.00,
+          "quantity": 12
+        },
+        {
+          "name": "Lenovo Legion 7i",
+          "description": "Производительность для геймеров",
+          "price": 160000.00,
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "name": "Гаджеты",
+      "description": "Умные устройства для повседневной жизни",
+      "products": [
+        {
+          "name": "Apple Watch Ultra 2",
+          "description": "Для экстремальных тренировок",
+          "price": 95000.00,
+          "quantity": 18
+        },
+        {
+          "name": "Samsung Galaxy Watch 6",
+          "description": "Универсальные умные часы",
+          "price": 45000.00,
+          "quantity": 25
+        },
+        {
+          "name": "Xiaomi Smart Band 8",
+          "description": "Для активного образа жизни",
+          "price": 6000.00,
+          "quantity": 50
+        }
+      ]
+    },
+    {
+      "name": "Телевизоры",
+      "description": "Современные устройства для отображения видео",
+      "products": [
+        {
+          "name": "Samsung Neo QLED 8K",
+          "description": "Сверхчёткое 8K изображение",
+          "price": 450000.00,
+          "quantity": 5
+        },
