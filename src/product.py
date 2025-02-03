@@ -89,8 +89,9 @@ class Product(CreationLoggerMixin, BaseProduct):
         assert product.price == 50.0  # Цена не изменилась
 
     def __add__(self, other):
-        if type(self) != type(other):  # Проверяем, что складываются объекты одного типа
-            raise TypeError("Сложение возможно только между объектами одного и того же типа.")
+        if not isinstance(other, Product):
+            raise TypeError("Сложение возможно только между объектами класса Product.")
+
         return (self.price * self.quantity) + (other.price * other.quantity)
 
     def get_total_value(self):
